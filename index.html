@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">Hello Jquery</h1>
+    <button id="in">FadeIn</button>
+    <button id="out">FadeOut</button>
+    <button id="stop">Stop</button>
+
+    <ul id="content">
+        <li>
+            <button data-foo="bar" data-action="SAVE">Click Me 1</button>
+        </li>
+        <li>
+            <button data-action="DELETE">Click Me 2</button>
+        </li>
+        <li>
+            <button>Click Me 3</button>
+        </li>
+        <li>
+            <button>Click Me 4</button>
+        </li>
+    </ul>
+
+    <script src="./scripts/jquery.js"></script>
+    <script>
+        $().ready(() => {
+            $("#in").click(() => {
+                $('#title').fadeIn(2000, () => {
+                    console.log("OVER");
+                })
+            });
+            $("#out").click(() => {
+                $('#title').fadeOut(2000);
+            });
+
+            $("#stop").click(() => {
+                $('#title').stop();
+            });
+        });
+
+        $('#content').on("click", "button", function () {
+            switch ($(this).data('action')) {
+                case 'SAVE':
+                    console.log("Sauvegarder");
+                    break;
+                case 'DELETE':
+                    console.log("Delete");
+                    break;
+                default:
+                    break;
+            } 
+        });
+    </script>
+</body>
+</html>
